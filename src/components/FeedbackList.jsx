@@ -2,7 +2,7 @@ import React from "react";
 import FeedbackItem from "./FeedbackItem";
 import PropTypes from "prop-types";
 
-function FeedbackList({ feedback, setFeedback, deleteFeedback }) {
+function FeedbackList({ feedback, deleteFeedback }) {
 	if (!feedback || feedback.length === 0) {
 		return <p>No Feedback Yet</p>;
 	}
