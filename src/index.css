@@ -50,6 +50,7 @@ header {
 	font-size: 22px;
 	font-weight: 600;
 	text-align: center;
+	text-decoration: none;
 }
 
 .rating {
@@ -116,6 +117,14 @@ input {
 
 input:focus {
 	outline: none;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+	text-decoration: none;
+	color: inherit;
 }
 
 .feedback-stats {
@@ -199,7 +208,8 @@ input:focus {
 	cursor: pointer;
 }
 
-.about-link a:hover {
+.about-link a:hover,
+.home-icon:hover {
 	color: #ff6a95;
 }
 
