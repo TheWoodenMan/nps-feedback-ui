@@ -1,4 +1,46 @@
-# Getting Started with Create React App
+# NPS-Feedback-UI
+
+**Link to project:** https://elegant-khapse-ac9f5c.netlify.app/
+
+NPS or net promoter score is used by many companies to make sense of customer reviews and identify key components of their products or services for improvement.
+
+The App is built in JavaScript, using React as a framework.
+
+I built this set of components using create-react-app and as a study to understand the basic react hooks useState and useffect. I also wanted to learn about some of the more complex hooks like useContext and useParams.
+
+# How It's Made:
+
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
+
+# Hooks: useState, useEffect, useContext
+
+# Mobile Responsive View
+
+## Optimizations
+
+I'm a big fan of Test Driven Development TDD, but need to gain more experience in writing tests for react components to really get going with that.
+I added JEST to the project with the aim of deepening my knowledge and built snapshot tests for the main components.
+
+## Lessons Learned:
+
+## Examples:
+
+Take a look at these other examples that I have in my own portfolio:
+
+Tenzies: https://github.com/TheWoodenMan/react-tenzies
+This simple app was built as a challenge to tie together my knowledge of core react hooks useState and useEffect.
+
+Behavioural Recruitment RESTful API: https://github.com/TheWoodenMan/behavioural-recruitment
+This RESTful API was my most detailed exploration of CRUD functions and my first real implementation of mongoose, both of which feature heavily in this app
+
+## Footnote and Credits
+
+Much of the code was put together as part of a code along project by Brad Traversy which can be found here: https://github.com/bradtraversy/feedback-app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -29,44 +71,8 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# nps-feedback-ui
-# nps-feedback-ui
