@@ -7,7 +7,7 @@ const MongoStore = require("connect-mongo");
 const logger = require("morgan");
 const feedbackRoutes = require("./routes/feedback");
 
-require("dotenv").config({ path: "backend/config/.env" });
+require("dotenv").config({ path: "config/.env" });
 const PORT = process.env.PORT;
 
 const dbName = process.env.DB_NAME;
@@ -35,7 +35,7 @@ app.use(
 	})
 );
 
-app.use("/", feedbackRoutes);
+app.use("/api", feedbackRoutes);
 
 app.listen(process.env.PORT || 8000, () => {
 	console.log(`Server running on port ${PORT}`);
