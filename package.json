@@ -2,7 +2,6 @@
 	"name": "nps-feedback-ui",
 	"version": "0.1.0",
 	"private": true,
-	"proxy": "http://localhost:8000",
 	"dependencies": {
 		"@testing-library/user-event": "^13.5.0",
 		"concurrently": "^7.6.0",
@@ -27,12 +26,12 @@
 		"web-vitals": "^2.1.4"
 	},
 	"scripts": {
-		"start": "concurrently \"node backend/server.js\" \"serve -s build\"",
+		"start": "concurrently \"npm run server\" \"serve -s build\"",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"server": "json-server --watch db.json --port 5000",
-		"dev": "concurrently \"npm run server\" \"npm start\" "
+		"server": "node server.js",
+		"dev": "concurrently \"nodemon server.js\" \"react-scripts start\" "
 	},
 	"eslintConfig": {
 		"extends": [
