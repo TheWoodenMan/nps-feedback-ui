@@ -18,7 +18,9 @@ export const FeedbackProvider = ({ children }) => {
 	// fetch feedback
 	const fetchFeedback = async () => {
 		// const res = await fetch(`/feedback?_sort=id&_order=desc`); // json-server
-		const res = await fetch(`http://localhost:8000/api/feedback`); // express
+		const res = await fetch(
+			`https://nps-feedback-ui-production.up.railway.app/api/feedback`
+		); // express
 		const data = await res.json();
 		console.log(data);
 		setFeedback(data);
@@ -28,9 +30,12 @@ export const FeedbackProvider = ({ children }) => {
 	// deletes feedback item
 	const deleteFeedback = async (id) => {
 		if (window.confirm("Are you sure you want to delete?")) {
-			await fetch(`http://localhost:8000/api/feedback/${id}`, {
-				method: "DELETE"
-			});
+			await fetch(
+				`https://nps-feedback-ui-production.up.railway.app/api/feedback/${id}`,
+				{
+					method: "DELETE"
+				}
+			);
 			setFeedback(feedback.filter((item) => item._id !== id));
 		}
 	};
@@ -39,13 +44,16 @@ export const FeedbackProvider = ({ children }) => {
 
 	const updateFeedback = async (id, updItem) => {
 		console.log(id);
-		const res = await fetch(`http://localhost:8000/api/feedback/${id}`, {
-			method: "PUT",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify(updItem)
-		});
+		const res = await fetch(
+			`https://nps-feedback-ui-production.up.railway.app/api/feedback/${id}`,
+			{
+				method: "PUT",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(updItem)
+			}
+		);
 		console.log(updItem);
 
 		const data = await res.json();
@@ -66,13 +74,16 @@ export const FeedbackProvider = ({ children }) => {
 
 	// adds feedback item
 	const addFeedback = async (newFeedback) => {
-		const res = await fetch(`http://localhost:8000/api/feedback`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify(newFeedback)
-		});
+		const res = await fetch(
+			`https://nps-feedback-ui-production.up.railway.app/api/feedback`,
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(newFeedback)
+			}
+		);
 
 		const data = await res.json();
 		console.log(data);
