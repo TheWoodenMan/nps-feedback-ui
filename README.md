@@ -1,6 +1,6 @@
 # NPS-Feedback-UI
 
-**Link to project:** https://elegant-khapse-ac9f5c.netlify.app/
+**Link to project:** https://nps-feedback-ui-production.up.railway.app/
 
 NPS or net promoter score is used by many companies to make sense of customer reviews and identify key components of their products or services for improvement.
 
@@ -8,25 +8,53 @@ The App is built in JavaScript, using React as a framework.
 
 I built this set of components using create-react-app and as a study to understand the basic react hooks useState and useffect. I also wanted to learn about some of the more complex hooks like useContext and useParams.
 
+I added significant functionality to the base project, adding in a full backend with database.  
+
 # How It's Made:
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
+
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+
 
 # Hooks: useState, useEffect, useContext
 
-# Mobile Responsive View
+# Middleware: Morgan/logger, cors, express-session, Mongoose, concurrently, connect-mongo.
 
 ## Optimizations
 
 I'm a big fan of Test Driven Development TDD, but need to gain more experience in writing tests for react components to really get going with that.
 I added JEST to the project with the aim of deepening my knowledge and built snapshot tests for the main components.
 
+I could have set up the backend and frontend separately but I wanted to have at least one project setup where they happily co-exist. 
+I used concurrently to get node/express and create-react-app to sit side by side, with all routes and views handled by react, and express
+taking care of only the database.
+
+The structure of the App is set up as MVC - Model, View, Controller.  With MongoDB/Mongoose as Model, React as the view and Express as the Controller.
+
 ## Lessons Learned:
+
+The devops side of this project was probably the trickiest part of it.  
+
+Initally for the static site, I used Netlify, which worked great until I added a backend. 
+Netlify doesn't support backend apps without the use of serverless functions, cyclic 
+really didn't like the two projects being in the same location and so I ended on railway.app. 
+
+It's the first time I've deployed there and I'm quite happy with how it went.  Railway automatically containerizes apps with Docker which is actually a great feature. If the spin-up/down speed for containers on railway is good - I can see myself using them quite a bit more.
+
+## Future Updates
+
+I want to add in more dynamic features for the form, as you write longer messages - the color changes and the user gets feedback (think booking.com) I also want to make the connection from the front to back more secure, I'm already using cors but I'd like to add in more secure middleware like helmet and/or an API key.
 
 ## Examples:
 
@@ -42,6 +70,8 @@ This RESTful API was my most detailed exploration of CRUD functions and my first
 
 Much of the code was put together as part of a code along project by Brad Traversy which can be found here: https://github.com/bradtraversy/feedback-app
 
+Although the backend design and build was done 100% from scratch.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -50,8 +80,11 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in production mode for both the frontend and backend concurrently.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+you can find the backend at  [http://localhost:8000](http://localhost:8000)
+
+If you're using postman to check it out, routes are at /api/feedback
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
