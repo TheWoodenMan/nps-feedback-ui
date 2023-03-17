@@ -17,7 +17,8 @@ export const FeedbackProvider = ({ children }) => {
 
 	// fetch feedback
 	const fetchFeedback = async () => {
-		const res = await fetch(`/feedback?_sort=id&_order=desc`);
+		// const res = await fetch(`/feedback?_sort=id&_order=desc`); // json-server
+		const res = await fetch(`http://localhost:8000/feedback`); // express
 		const data = await res.json();
 		setFeedback(data);
 		setIsLoading(false);
@@ -26,28 +27,31 @@ export const FeedbackProvider = ({ children }) => {
 	// deletes feedback item
 	const deleteFeedback = async (id) => {
 		if (window.confirm("Are you sure you want to delete?")) {
-			await fetch(`/feedback/${id}`, {
+			await fetch(`http://localhost:8000/feedback/${id}`, {
 				method: "DELETE"
 			});
-			setFeedback(feedback.filter((item) => item.id !== id));
+			setFeedback(feedback.filter((item) => item._id !== id));
 		}
 	};
 
 	// update feedback item
 
 	const updateFeedback = async (id, updItem) => {
-		const res = await fetch(`/feedback/${id}`, {
+		console.log(id);
+		const res = await fetch(`http://localhost:8000/feedback/${id}`, {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify(updItem)
 		});
+		console.log(updItem);
 
 		const data = await res.json();
+		console.log(data);
 
 		setFeedback(
-			feedback.map((item) => (item.id === id ? { ...item, ...data } : item))
+			feedback.map((item) => (item._id === id ? { ...item, ...data } : item))
 		);
 	};
 
@@ -61,7 +65,7 @@ export const FeedbackProvider = ({ children }) => {
 
 	// adds feedback item
 	const addFeedback = async (newFeedback) => {
-		const res = await fetch(`/feedback`, {
+		const res = await fetch(`http://localhost:8000/feedback`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
