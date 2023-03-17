@@ -1,9 +1,10 @@
 const Feedback = require("../models/Feedback");
+const { ObjectId } = require("mongodb");
 
 module.exports = {
 	fetchFeedback: async (req, res) => {
 		try {
-			const feedback = await Feedback.find().sort({ "date": -1 });
+			const feedback = await Feedback.find().sort({ "rating": -1 });
 			res.send(JSON.stringify(feedback));
 		} catch (err) {
 			throw new Error(err);
@@ -11,10 +12,11 @@ module.exports = {
 	},
 
 	addFeedback: async (req, res) => {
-		const body = JSON.parse(req.body);
+		const body = req.body;
 
 		try {
 			const feedback = await Feedback.create({
+				_id: new ObjectId(),
 				rating: body.rating,
 				text: body.text
 			});
@@ -31,7 +33,7 @@ module.exports = {
 		const id = req.params.id;
 
 		try {
-			await Feedback.findOneAndDelete({ "_id": id });
+			await Feedback.findByIdAndDelete({ _id: id });
 			res.status(200);
 			res.json({ "status": `Feedback id: ${id} deleted` });
 		} catch (err) {
@@ -41,16 +43,13 @@ module.exports = {
 
 	updateFeedback: async (req, res) => {
 		const id = req.params.id;
-		const body = JSON.parse(req.body);
+		const body = req.body;
 
 		try {
-			await Feedback.findOneAndUpdate(
-				{ "_id": id },
-				{
-					rating: body.rating,
-					text: body.text
-				}
-			);
+			await Feedback.findByIdAndUpdate(id, {
+				rating: body.rating,
+				text: body.text
+			});
 		} catch (err) {
 			throw new Error(err);
 		}

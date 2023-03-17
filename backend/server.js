@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const cors = require("cors");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const logger = require("morgan");
@@ -16,6 +17,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(logger("dev"));
+app.use(cors());
 
 const clientP = mongoose
 	.connect(dbString)
@@ -33,7 +35,7 @@ app.use(
 	})
 );
 
-app.use("/feedback", feedbackRoutes);
+app.use("/", feedbackRoutes);
 
 app.listen(process.env.PORT || 8000, () => {
 	console.log(`Server running on port ${PORT}`);
