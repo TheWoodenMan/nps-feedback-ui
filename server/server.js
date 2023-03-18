@@ -9,10 +9,11 @@ const logger = require("morgan");
 const feedbackRoutes = require("./routes/feedback");
 
 require("dotenv").config({ path: "server/config/.env" });
-const SERVER_PORT = process.env.SERVER_PORT || 8000;
+const SERVER_PORT = process.env.PORT || 8000;
 
 const dbName = process.env.DB_NAME;
 const dbString = process.env.DB_STRING;
+const ENV = process.env.NODE_ENV;
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
@@ -39,7 +40,9 @@ app.use(
 app.use("/api", feedbackRoutes);
 
 app.get("/", (req, res) => {
-	res.sendFile("index.html", { root: "build" });
+	res.sendFile(
+		path.join(__dirname, `${ENV === "DEV" ? "public" : "build"}`, "index.html")
+	);
 });
 
 app.listen(SERVER_PORT, () => {

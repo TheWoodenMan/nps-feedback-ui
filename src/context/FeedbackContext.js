@@ -4,7 +4,7 @@ const FeedbackContext = createContext();
 
 const url =
 	process.env.REACT_APP_ENV === "PROD"
-		? `https://localhost:8000/api/feedback/`
+		? `https://nps-feedback-ui-production.up.railway.app/api/feedback/`
 		: "http://localhost:8000/api/feedback/";
 
 export const FeedbackProvider = ({ children }) => {
