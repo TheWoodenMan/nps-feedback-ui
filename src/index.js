@@ -1,14 +1,22 @@
 import React from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
 
-const root = document.getElementById("root");
+const container = document.getElementById("root");
+const root = createRoot(container);
+// const root = document.getElementById("root");
 
-ReactDOM.render(
+root.render(
 	<React.StrictMode>
-		<App />
-	</React.StrictMode>,
-	root
+		<App tab="home" />
+	</React.StrictMode>
 );
+
+// ReactDOM.render(
+// 	<React.StrictMode>
+// 		<App />
+// 	</React.StrictMode>,
+// 	root
+// );
