@@ -19,7 +19,8 @@ export const FeedbackProvider = ({ children }) => {
 	const fetchFeedback = async () => {
 		// const res = await fetch(`/feedback?_sort=id&_order=desc`); // json-server
 		const res = await fetch(
-			`https://nps-feedback-ui-production.up.railway.app/api/feedback`
+			// `https://nps-feedback-ui-production.up.railway.app/api/feedback`
+			`http://localhost:8000/api/feedback`
 		); // express
 		const data = await res.json();
 		console.log(data);
@@ -31,7 +32,8 @@ export const FeedbackProvider = ({ children }) => {
 	const deleteFeedback = async (id) => {
 		if (window.confirm("Are you sure you want to delete?")) {
 			await fetch(
-				`https://nps-feedback-ui-production.up.railway.app/api/feedback/${id}`,
+				// `https://nps-feedback-ui-production.up.railway.app/api/feedback/${id}`,
+				`http://localhost:8000/api/feedback/${id}`,
 				{
 					method: "DELETE"
 				}
@@ -45,7 +47,8 @@ export const FeedbackProvider = ({ children }) => {
 	const updateFeedback = async (id, updItem) => {
 		console.log(id);
 		const res = await fetch(
-			`https://nps-feedback-ui-production.up.railway.app/api/feedback/${id}`,
+			// `https://nps-feedback-ui-production.up.railway.app/api/feedback/${id}`,
+			`https://localhost:8000/api/feedback/${id}`,
 			{
 				method: "PUT",
 				headers: {
@@ -75,7 +78,9 @@ export const FeedbackProvider = ({ children }) => {
 	// adds feedback item
 	const addFeedback = async (newFeedback) => {
 		const res = await fetch(
-			`https://nps-feedback-ui-production.up.railway.app/api/feedback`,
+			// `https://nps-feedback-ui-production.up.railway.app/api/feedback`,
+			`https://localhost:8000/api/feedback`,
+
 			{
 				method: "POST",
 				headers: {
