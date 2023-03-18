@@ -3,9 +3,9 @@ import { createContext, useState, useEffect } from "react";
 const FeedbackContext = createContext();
 
 const url =
-	process.env.REACT_APP_ENV === "PROD"
-		? `https://nps-feedback-ui-production.up.railway.app/api/feedback`
-		: "http://localhost:8000/api/feedback/";
+	process.env.REACT_APP_ENV === "DEV"
+		? `http://localhost:${process.env.PORT || 8000}/api/feedback/`
+		: `https://nps-feedback-ui-production.up.railway.app/api/feedback`;
 
 export const FeedbackProvider = ({ children }) => {
 	const [isLoading, setIsLoading] = useState(true);
