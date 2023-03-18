@@ -14,7 +14,7 @@ const dbName = process.env.DB_NAME;
 const dbString = process.env.DB_STRING;
 const buildpath = __dirname + "/build/";
 var corsOptions = {
-	origin: "http://localhost:3000"
+	origin: `https://nps-feedback-ui-production.up.railway.app`
 };
 
 app.use(express.static(buildpath));
