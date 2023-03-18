@@ -1,13 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 
 const FeedbackContext = createContext();
-let url = "";
-
-if (process.env.REACT_APP_ENV === "DEV") {
-	url = `http://localhost:${process.env.PORT || 8000}/api/feedback/`;
-} else {
-	url = `https://nps-feedback-ui-production.up.railway.app/api/feedback`;
-}
+let url = `https://nps-feedback-ui-production.up.railway.app/api/feedback/`;
 
 console.log("fetching from: ", url);
 
