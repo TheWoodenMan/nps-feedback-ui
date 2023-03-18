@@ -6,6 +6,7 @@ const url =
 	process.env.REACT_APP_ENV === "DEV"
 		? `http://localhost:${process.env.PORT || 8000}/api/feedback/`
 		: `https://nps-feedback-ui-production.up.railway.app/api/feedback`;
+console.log("fetching from: ", url);
 
 export const FeedbackProvider = ({ children }) => {
 	const [isLoading, setIsLoading] = useState(true);
