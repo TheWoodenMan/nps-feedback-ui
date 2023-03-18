@@ -39,7 +39,7 @@ app.use(
 app.use("/api", feedbackRoutes);
 
 app.get("/", (req, res) => {
-	res.sendFile(path.join(__dirname + "/build"));
+	res.sendFile(path.join(__dirname + "/build/index.html"));
 });
 
 app.listen(PORT, () => {
