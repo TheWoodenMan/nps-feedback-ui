@@ -1,11 +1,14 @@
 import { createContext, useState, useEffect } from "react";
 
 const FeedbackContext = createContext();
+let url = "";
 
-const url =
-	process.env.REACT_APP_ENV === "DEV"
-		? `http://localhost:${process.env.PORT || 8000}/api/feedback/`
-		: `https://nps-feedback-ui-production.up.railway.app/api/feedback`;
+if (process.env.REACT_APP_ENV === "DEV") {
+	url = `http://localhost:${process.env.PORT || 8000}/api/feedback/`;
+} else {
+	url = `https://nps-feedback-ui-production.up.railway.app/api/feedback`;
+}
+
 console.log("fetching from: ", url);
 
 export const FeedbackProvider = ({ children }) => {
@@ -25,7 +28,7 @@ export const FeedbackProvider = ({ children }) => {
 	const fetchFeedback = async () => {
 		const res = await fetch(url);
 		const data = await res.json();
-		console.log(data);
+		// console.log(data);
 		setFeedback(data);
 		setIsLoading(false);
 	};
@@ -51,7 +54,7 @@ export const FeedbackProvider = ({ children }) => {
 			},
 			body: JSON.stringify(updItem)
 		});
-		console.log(updItem);
+		// console.log(updItem);
 
 		const data = await res.json();
 		console.log(data);
@@ -84,7 +87,7 @@ export const FeedbackProvider = ({ children }) => {
 		);
 
 		const data = await res.json();
-		console.log(data);
+		// console.log(data);
 
 		setFeedback([data, ...feedback]);
 	};
