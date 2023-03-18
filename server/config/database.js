@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-require("dotenv").config({ path: "config/.env" });
+require("dotenv").config({ path: "server/config/.env" });
 
 let dbConnectorStr = process.env.DB_STRING || process.env["DB_STRING"],
 	connectDB = async () => {

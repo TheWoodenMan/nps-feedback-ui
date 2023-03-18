@@ -2,6 +2,11 @@ import { createContext, useState, useEffect } from "react";
 
 const FeedbackContext = createContext();
 
+const url =
+	process.env.REACT_APP_ENV === "DEV"
+		? "http://localhost:8000/api/feedback/"
+		: `https://nps-feedback-ui-production.up.railway.app/api/feedback/`;
+
 export const FeedbackProvider = ({ children }) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [feedback, setFeedback] = useState([]);
@@ -17,11 +22,7 @@ export const FeedbackProvider = ({ children }) => {
 
 	// fetch feedback
 	const fetchFeedback = async () => {
-		// const res = await fetch(`/feedback?_sort=id&_order=desc`); // json-server
-		const res = await fetch(
-			// `https://nps-feedback-ui-production.up.railway.app/api/feedback`
-			`http://localhost:8000/api/feedback`
-		); // express
+		const res = await fetch(url);
 		const data = await res.json();
 		console.log(data);
 		setFeedback(data);
@@ -31,13 +32,9 @@ export const FeedbackProvider = ({ children }) => {
 	// deletes feedback item
 	const deleteFeedback = async (id) => {
 		if (window.confirm("Are you sure you want to delete?")) {
-			await fetch(
-				// `https://nps-feedback-ui-production.up.railway.app/api/feedback/${id}`,
-				`http://localhost:8000/api/feedback/${id}`,
-				{
-					method: "DELETE"
-				}
-			);
+			await fetch(`${url}${id}`, {
+				method: "DELETE"
+			});
 			setFeedback(feedback.filter((item) => item._id !== id));
 		}
 	};
@@ -46,17 +43,13 @@ export const FeedbackProvider = ({ children }) => {
 
 	const updateFeedback = async (id, updItem) => {
 		console.log(id);
-		const res = await fetch(
-			// `https://nps-feedback-ui-production.up.railway.app/api/feedback/${id}`,
-			`https://localhost:8000/api/feedback/${id}`,
-			{
-				method: "PUT",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: JSON.stringify(updItem)
-			}
-		);
+		const res = await fetch(`${url}${id}`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(updItem)
+		});
 		console.log(updItem);
 
 		const data = await res.json();
@@ -78,8 +71,7 @@ export const FeedbackProvider = ({ children }) => {
 	// adds feedback item
 	const addFeedback = async (newFeedback) => {
 		const res = await fetch(
-			// `https://nps-feedback-ui-production.up.railway.app/api/feedback`,
-			`https://localhost:8000/api/feedback`,
+			url,
 
 			{
 				method: "POST",

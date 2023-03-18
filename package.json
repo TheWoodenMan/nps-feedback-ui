@@ -31,10 +31,10 @@
 		"start": "concurrently --timings \"npm run frontend\" \"npm run server\"",
 		"build": "react-scripts build",
 		"frontend": "serve -s build",
-		"server": "node server.js",
+		"server": "node server/server.js",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"dev": "concurrently \"nodemon server.js\" \"react-scripts start\" "
+		"dev": "concurrently \"nodemon server/server.js\" \"react-scripts start\" "
 	},
 	"eslintConfig": {
 		"extends": [
