@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 8000;
 const dbName = process.env.DB_NAME;
 const dbString = process.env.DB_STRING;
 
-// app.use(express.static("public"));
+app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(logger("dev"));
@@ -39,7 +39,7 @@ app.use(
 app.use("/api", feedbackRoutes);
 
 app.get("/", (req, res) => {
-	res.sendFile(path.join(__dirname + "/build/index.html"));
+	res.sendFile("index.html", { root: "build" });
 });
 
 app.listen(PORT, () => {
