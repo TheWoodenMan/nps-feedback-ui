@@ -9,7 +9,7 @@ const logger = require("morgan");
 const feedbackRoutes = require("./routes/feedback");
 
 require("dotenv").config({ path: "server/config/.env" });
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 const dbName = process.env.DB_NAME;
 const dbString = process.env.DB_STRING;
@@ -39,7 +39,7 @@ app.use(
 app.use("/api", feedbackRoutes);
 
 app.get("/", (req, res) => {
-	res.sendFile(path.join(__dirname + "/build/index.html"));
+	res.sendFile(path.join(__dirname + "/build"));
 });
 
 app.listen(PORT, () => {
