@@ -9,7 +9,7 @@ const logger = require("morgan");
 const feedbackRoutes = require("./routes/feedback");
 
 require("dotenv").config({ path: "server/config/.env" });
-const PORT = process.env.PORT || 8000;
+const PORT = 8000;
 
 const dbName = process.env.DB_NAME;
 const dbString = process.env.DB_STRING;
