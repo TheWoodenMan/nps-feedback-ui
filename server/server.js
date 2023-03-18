@@ -9,7 +9,7 @@ const logger = require("morgan");
 const feedbackRoutes = require("./routes/feedback");
 
 require("dotenv").config({ path: "server/config/.env" });
-const PORT = process.env.PORT || 8000;
+const SERVER_PORT = process.env.SERVER_PORT || 8000;
 
 const dbName = process.env.DB_NAME;
 const dbString = process.env.DB_STRING;
@@ -42,6 +42,6 @@ app.get("/", (req, res) => {
 	res.sendFile("index.html", { root: "build" });
 });
 
-app.listen(PORT, () => {
-	console.log(`Server running on port ${PORT}`);
+app.listen(SERVER_PORT, () => {
+	console.log(`Server running on port ${SERVER_PORT}`);
 });
