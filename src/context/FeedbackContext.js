@@ -5,7 +5,7 @@ const FeedbackContext = createContext();
 const url =
 	process.env.REACT_APP_ENV === "PROD"
 		? `https://nps-feedback-ui-production.up.railway.app:8000/api/feedback/`
-		: "http://localhost:8000/api/feedback/";
+		: "/api/feedback/";
 
 export const FeedbackProvider = ({ children }) => {
 	const [isLoading, setIsLoading] = useState(true);
