@@ -50,7 +50,13 @@ Initally for the static site, I used Netlify, which worked great until I added a
 Netlify doesn't support backend apps without the use of serverless functions, cyclic 
 really didn't like the two projects being in the same location and so I ended on railway.app. 
 
+Even railway had it's issues, typically I define the ports for front/backend manually, but railway prefers it if you don't define them at all and leave it to them to allocate. This is fine but it led to a lot of confusion before I fully understood what was happening. 
+
 It's the first time I've deployed there and I'm quite happy with how it went.  Railway automatically containerizes apps with Docker which is actually a great feature. If the spin-up/down speed for containers on railway is good - I can see myself using them quite a bit more.
+
+I wanted to have fetch routes and ports change dynamically based on the dev environment but this is basically impossible with create-react-app which solves and fixes all env variables on the front end at build compilation. This was a great learning experience in terms of learning about different deployments.
+
+I think on reflection given the option - I would prefer to deploy with Vite or next.js over create-react-app
 
 ## Future Updates
 
@@ -98,6 +104,8 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
+the build directory needs to be copied into the server directory so the backend can deliver it. 
+The script automatically takes care of this - but you must delete old build directories before running.
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
