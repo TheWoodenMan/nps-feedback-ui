@@ -10,11 +10,15 @@ const feedbackRoutes = require("./routes/feedback");
 require("dotenv").config({ path: "server/config/.env" });
 const SERVER_PORT = process.env.PORT || 8000;
 
+const corsRoute =
+	process.env.API_ENDPOINT ||
+	`https://nps-feedback-ui-production.up.railway.app`;
+
 const dbName = process.env.DB_NAME;
 const dbString = process.env.DB_STRING;
 const buildpath = __dirname + "/build/";
 var corsOptions = {
-	origin: `https://nps-feedback-ui-production.up.railway.app`
+	origin: corsRoute
 };
 
 app.use(express.static(buildpath));

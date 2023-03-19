@@ -1,7 +1,10 @@
 import { createContext, useState, useEffect } from "react";
 
 const FeedbackContext = createContext();
-let url = `https://nps-feedback-ui-production.up.railway.app/api/feedback/`;
+
+let url =
+	process.env.REACT_APP_API_ENDPOINT ||
+	"https://nps-feedback-ui-production.up.railway.app/api/feedback/";
 
 console.log("fetching from: ", url);
 
@@ -40,7 +43,7 @@ export const FeedbackProvider = ({ children }) => {
 	// update feedback item
 
 	const updateFeedback = async (id, updItem) => {
-		console.log(id);
+		console.log(id, updItem);
 		const res = await fetch(`${url}${id}`, {
 			method: "PUT",
 			headers: {
@@ -48,14 +51,16 @@ export const FeedbackProvider = ({ children }) => {
 			},
 			body: JSON.stringify(updItem)
 		});
-		// console.log(updItem);
 
 		const data = await res.json();
 		console.log(data);
 
-		setFeedback(
-			feedback.map((item) => (item._id === id ? { ...item, ...data } : item))
-		);
+		setFeedback(feedback.map((item) => (item._id === id ? data : item)));
+
+		setFeedbackEdit({
+			item: {},
+			edit: false
+		});
 	};
 
 	// set item to be updated.

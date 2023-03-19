@@ -21,23 +21,23 @@ function FeedbackForm() {
 		}
 	}, [feedbackEdit]);
 
-	const handleTextChange = (e) => {
-		if (text === "") {
+	const handleTextChange = ({ target: { value } }) => {
+		if (value === "") {
 			setBtnDisabled(true);
 			setMessage(null);
-		} else if (text !== "" && text.trim().length <= 10) {
+		} else if (value.trim().length < 10) {
 			setMessage("Text must be at least 10 characters");
 			setBtnDisabled(true);
 		} else {
 			setMessage(null);
 			setBtnDisabled(false);
 		}
-		setText(e.target.value);
+		setText(value);
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (text.trim().length > 10) {
+		if (text.trim().length >= 10) {
 			const newFeedback = {
 				text,
 				rating
@@ -55,7 +55,7 @@ function FeedbackForm() {
 	return (
 		<Card>
 			<form onSubmit={handleSubmit}>
-				<h2>How would you rate your service with us?</h2>
+				<h2>How likely are you to recommend us?</h2>
 				<RatingSelect
 					select={(rating) => {
 						setRating(rating);
