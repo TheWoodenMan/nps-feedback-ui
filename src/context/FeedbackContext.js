@@ -2,9 +2,7 @@ import { createContext, useState, useEffect } from "react";
 
 const FeedbackContext = createContext();
 
-let url =
-	process.env.REACT_APP_API_ENDPOINT ||
-	"https://nps-feedback-ui-production.up.railway.app/api/feedback/";
+let url = "https://nps-feedback-ui-production.up.railway.app/api/feedback/";
 
 console.log("fetching from: ", url);
 
