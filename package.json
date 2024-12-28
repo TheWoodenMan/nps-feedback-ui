@@ -7,6 +7,7 @@
 	"proxy": "http://localhost:4000",
 	"dependencies": {
 		"@testing-library/user-event": "^13.5.0",
+		"audit": "^0.0.6",
 		"concurrently": "^7.6.0",
 		"connect-mongo": "^5.0.0",
 		"cors": "^2.8.5",
@@ -22,7 +23,7 @@
 		"react-dom": "^18.2.0",
 		"react-icons": "^4.7.1",
 		"react-router-dom": "^6.8.2",
-		"react-scripts": "^3.0.1",
+		"react-scripts": "^5.0.1",
 		"serve": "^14.2.0",
 		"web-vitals": "^2.1.4"
 	},
