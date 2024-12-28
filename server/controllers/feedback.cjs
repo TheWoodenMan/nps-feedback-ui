@@ -1,4 +1,4 @@
-const Feedback = require("../models/Feedback");
+const Feedback = require("../models/Feedback.cjs");
 const { ObjectId } = require("mongodb");
 
 module.exports = {
@@ -6,7 +6,9 @@ module.exports = {
 		try {
 			const feedback = await Feedback.find().sort({ "rating": -1 });
 			res.send(JSON.stringify(feedback));
+			console.log("feedback found")
 		} catch (err) {
+			console.log("feedback found")
 			throw new Error(err);
 		}
 	},
@@ -19,13 +21,17 @@ module.exports = {
 				_id: new ObjectId(),
 				rating: body.rating,
 				text: body.text
+				
 			});
+			console.log("feedback added")
 			feedback.save().then((response) => {
 				res.status(200);
 				res.json(response);
 			});
 		} catch (err) {
+			console.log("feedback not added")
 			throw new Error(err);
+
 		}
 	},
 

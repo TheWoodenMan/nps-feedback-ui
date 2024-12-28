@@ -5,8 +5,7 @@ const cors = require("cors");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const logger = require("morgan");
-const feedbackRoutes = require("./routes/feedback");
-
+const feedbackRoutes = require("./routes/feedback.cjs");
 require("dotenv").config({ path: "server/config/.env" });
 const SERVER_PORT = process.env.PORT || 8000;
 
@@ -29,7 +28,13 @@ app.use(cors(corsOptions));
 
 const clientP = mongoose
 	.connect(dbString)
-	.then((m) => m.connection.getClient());
+	.then((m) => m.connection.getClient())
+	.then(()=>{
+		console.log("Successfully connected to mongoDB")
+	}).catch(error=>{
+		console.error('MongoDB connection error:', error.message);
+	}) 
+	
 
 app.use(
 	session({
@@ -37,8 +42,9 @@ app.use(
 		resave: false,
 		saveUninitialized: false,
 		store: MongoStore.create({
-			clientPromise: clientP,
-			dbName: dbName
+			client: clientP,
+			dbName: dbName,
+			mongoUrl: process.env.DB_STRING
 		})
 	})
 );

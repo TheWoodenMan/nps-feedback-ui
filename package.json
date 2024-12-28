@@ -1,8 +1,10 @@
 {
 	"name": "nps-feedback-ui",
 	"version": "0.1.0",
+	"type": "module",
 	"homepage": ".",
 	"private": true,
+	"proxy": "http://localhost:4000",
 	"dependencies": {
 		"@testing-library/user-event": "^13.5.0",
 		"concurrently": "^7.6.0",
@@ -27,10 +29,10 @@
 	"scripts": {
 		"start": "npm run server",
 		"build": "react-scripts build && cp -R build server",
-		"server": "node server/server.js",
+		"server": "node server/server.cjs",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"dev": "nodemon server/server.js"
+		"dev": "nodemon server/server.cjs"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -55,6 +57,7 @@
 		"@testing-library/react": "^14.0.0",
 		"jest": "^27.5.1",
 		"nodemon": "^2.0.21",
-		"react-test-renderer": "^18.2.0"
+		"react-test-renderer": "^18.2.0",
+		"@babel/plugin-proposal-private-property-in-object": "7.21.11"
 	}
 }
